@@ -1,0 +1,22 @@
+class Solution {
+    // function should insert the data to the front of the list
+     static Node insert(Node head, int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            return newNode;
+        }
+        newNode.npx = head;  
+        head = newNode; 
+        return head;  
+    }
+    static ArrayList<Integer> getList(Node head) {
+        ArrayList<Integer> ar = new ArrayList<>();
+        Node curr = head;
+        while (curr != null) {
+            ar.add(curr.data);
+            curr = curr.npx;
+        }
+        return ar;
+    }
+}
