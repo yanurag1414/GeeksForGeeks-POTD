@@ -1,0 +1,20 @@
+class Solution {
+    static Node construct(int arr[][]) {
+        // Add your code here.
+        
+        return helper(arr,0,0);
+        
+    }
+    
+    static Node helper(int[][] arr , int i , int j){
+        if(i>=arr.length || j>=arr[0].length){
+            return null;
+        }
+        Node curr = new Node(arr[i][j]);
+        
+        curr.right = helper(arr,i,j+1);
+        curr.down = helper(arr,i+1,j);
+        
+        return curr;
+    }
+}
