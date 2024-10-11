@@ -1,0 +1,15 @@
+ public List<Integer> rearrange(List<Integer> arr) {
+        // Code here
+        int i = 0;
+        int n = arr.size();
+        while (i < n) {
+            int e = arr.get(i);
+            if (e == -1 || e == i) {  
+                i++;
+            } else {
+                arr.set(i, arr.get(e));
+                arr.set(e, e);
+            }
+        }
+         return arr;
+    }
