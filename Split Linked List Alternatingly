@@ -1,0 +1,49 @@
+ Node[] alternatingSplitList(Node head) {
+        // code here
+        Node[] arr = new Node[2];
+        
+        Node curr = head;
+        Node n1 = null;
+        Node n2 = null;
+        
+        Node head1 = null;
+        Node head2 = null;
+        
+        int count = 0;
+        while(curr!=null){
+            if(count%2==0){
+                if(n1==null){
+                    n1 = curr;
+                    head1 = n1;
+                }else{
+                   
+                    head1.next = curr;
+                     head1 = head1.next;
+                }
+            }else{
+                if(n2==null){
+                    n2=curr;
+                    head2 = n2;
+                }
+                else{
+                  
+                    head2.next = curr;
+                      head2 = head2.next;
+                }
+            }
+            count++;
+            curr = curr.next;
+            
+        }
+        if(head1!=null){
+            head1.next = null;
+        }
+        
+        if(head2!=null){
+            head2.next = null;
+        }
+        
+        arr[0] = n1;
+        arr[1] = n2;
+        return arr;
+    }
