@@ -1,0 +1,16 @@
+ public static int countgroup(int arr[]) {
+        // Complete the function
+        int mod = 100000009;
+        int res = 1;
+        int xor = 0;
+        for(int i = 0;i<arr.length;i++){
+            xor ^= arr[i];
+        }
+        
+        for(int i = 0;i<arr.length-1;i++){
+            res = res*2;
+            res %= mod;
+        }
+        
+        return (xor==0)?res-1:0;
+    }
