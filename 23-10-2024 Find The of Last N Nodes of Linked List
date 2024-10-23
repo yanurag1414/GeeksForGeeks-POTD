@@ -1,0 +1,20 @@
+ public int sumOfLastN_Nodes(Node head, int n) {
+        // write code here
+        Node prev = null;
+        Node curr = head;
+        while(curr!=null){
+            Node temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
+        }
+        
+        int sum = 0;
+        while(n>0){
+            sum += prev.data;
+            prev = prev.next;
+            n--;
+        }
+        
+        return sum;
+    }
