@@ -1,0 +1,23 @@
+ static ArrayList<Integer> modifyAndRearrangeArr(int arr[]) {
+        // Complete the function
+       for(int i = 1;i<arr.length;i++){          //modifying the array as required
+            if(arr[i]!=0 && arr[i]==arr[i-1]){
+                arr[i-1] = 2*arr[i-1];
+                arr[i] = 0;
+            }
+        }
+        int count = 0;
+        for(int i = 0;i<arr.length;i++){       //moving zeroes to end
+            if(arr[i]!=0){
+                int temp = arr[i];
+                arr[i] = arr[count];
+                arr[count] = temp;
+                count++;
+            }
+        }
+        ArrayList<Integer> ar = new ArrayList<>();    //add array elements into arraylist
+        for (int value : arr) {
+            ar.add(value);
+        }
+        return ar;
+    }
