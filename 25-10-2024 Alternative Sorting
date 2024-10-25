@@ -1,0 +1,22 @@
+public static ArrayList<Integer> alternateSort(int[] arr) {
+
+        // Your code goes here
+        ArrayList<Integer> ar = new ArrayList<>();
+        
+        Arrays.sort(arr);
+        int i = 0;
+        int j = arr.length-1;
+        
+        int count = 0;
+        while(i<=j){
+            if(count%2==0){
+                ar.add(arr[j]);
+                j--;
+            }else{
+                ar.add(arr[i]);
+                i++;
+            }
+            count++;
+        }
+        return ar;
+    }
