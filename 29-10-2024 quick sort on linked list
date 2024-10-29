@@ -1,0 +1,58 @@
+ public static Node quickSort(Node head) {
+    // Find the tail of the list
+    Node tail = getTail(head);
+    // Call the helper function to sort the list
+    quickSortHelper(head, tail);
+    return head;
+}
+
+    public static Node getTail(Node cur) {
+        while (cur != null && cur.next != null)
+            cur = cur.next;
+        return cur;
+    }
+
+    public static Node partition(Node head, Node tail) {
+        Node pivot = head; // Choose head as pivot
+        Node pre = head;
+        Node curr = head.next;
+    
+        // Traverse and partition around pivot
+        while (curr != tail.next) {
+            if (curr.data < pivot.data) {
+               pre = pre.next;
+                int temp = pre.data;
+                pre.data = curr.data;
+                curr.data = temp;
+                 
+            }
+            curr = curr.next;
+        }
+
+    // Place pivot data in the correct position
+        int temp = pre.data;
+        pre.data = pivot.data;
+        pivot.data = temp;
+    
+        return pre;
+    }
+
+    public static void quickSortHelper(Node head, Node tail) {
+        if (head == null || head == tail) {
+            return; // Base case
+        }
+    
+        // Partition the list, `pivot` is the new pivot node
+        Node pivot = partition(head, tail);
+    
+        // Sort the left of pivot
+        if (pivot != head) {
+            quickSortHelper(head, getTail(pivot));
+        }
+        // Sort the right of pivot
+        if (pivot != tail) {
+            quickSortHelper(pivot.next, tail);
+        }
+    }
+
+    
