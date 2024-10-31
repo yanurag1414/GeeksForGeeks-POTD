@@ -1,0 +1,55 @@
+ public Node sortedInsert(Node head, int x) {
+        // add your code here
+        if(head==null){
+            return new Node(x);
+        }
+         Node n = new Node(x);
+        
+        //handling if only one node
+        if(head.next==null){
+            if(head.data>x){
+                 n.next = head;
+                 head.prev = n;
+                 head = n;
+            }else{
+                head.next = n;
+                n.prev = head;
+            }
+            return head;
+        }
+        Node curr = head;
+        
+        while(curr.next.data<x  && curr.next.next!=null){
+            curr = curr.next;
+        }
+        
+         
+         //inserting at first position
+         if(curr==head && curr.data>x){
+                 n.next = curr;
+                 curr.prev = n;
+                 head = n;
+             
+         }
+         
+    
+       else if(curr.next.data>=x){
+            //inserting in middle
+            n.next = curr.next;
+            n.prev = curr.next.prev;
+            curr.next = n;
+            curr.next.prev = n;
+           
+           
+            
+        }
+        else{ 
+            //inserting in last
+            curr = curr.next;
+            curr.next = n;
+            n.prev = curr;
+           
+        }
+        return head;
+       
+    }
