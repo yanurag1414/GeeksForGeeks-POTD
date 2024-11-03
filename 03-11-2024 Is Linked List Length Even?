@@ -1,0 +1,10 @@
+ public boolean isLengthEven(Node head) {
+        // code here
+        int n = 0;
+        Node curr = head;
+        while(curr!=null){
+            n++;
+            curr= curr.next;
+        }
+        return n%2==0?true:false;
+    }
